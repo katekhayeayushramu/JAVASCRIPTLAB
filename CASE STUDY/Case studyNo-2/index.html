@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Shopping Billing System</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Online Shopping Billing System</h1>
+<h2>Ayush Katekhaye</h2>
+<h2>24070521161</h2>
+<form>
+
+<label>Customer Name</label>
+<input type="text" id="name">
+
+<label>Mobile Number</label>
+<input type="tel" id="mobile">
+
+<label>Invoice Number</label>
+<input type="text" id="invoice">
+
+<label>Product Name</label>
+<input type="text" id="product">
+
+<label>Quantity (Kg)</label>
+<input type="number" id="qty">
+
+<label>Rate per Kg (₹)</label>
+<input type="number" id="rate">
+
+<label>Discount (%)</label>
+<input type="number" id="discount">
+
+<label>GST (%)</label>
+<input type="number" id="gst">
+
+<label>Packing Charges (₹)</label>
+<input type="number" id="packing">
+
+<label>Payment Mode</label>
+
+<select id="payment">
+<option>Cash</option>
+<option>Card</option>
+<option>UPI</option>
+</select>
+
+<label>Membership</label>
+
+<select id="member">
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<button type="button" onclick="calculateBill()">
+Calculate Bill
+</button>
+
+</form>
+
+<div id="bill"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>  
+
