@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> internal css</title>
+
+        <!-- External CSS -->
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+            h1{
+                color:red;
+                font-size:24px;
+                text-align :center;
+            }
+
+            p{
+                color:blue;
+                font-size:20px;
+                text-align:center;
+            }
+            .btn{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            button{
+                background-color:green;
+                color:white;
+                padding:10px;
+                position :absolute;
+                margin: left;
+                border:none;
+                border-radius:5px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Inline CSS -->
+        <h1 style="background-color:yellow;"> Welcome to internal css</h1>
+
+        <p>Ayush katekhaye</p>
+
+        <p>24070521161</p>
+
+        <div class="btn">
+            <button onclick="showMessage()">click me</button>
+        </div>
+
+        <br><br><br>
+
+        <div class="btn">
+            <button onclick="displayInfo()">External JavaScript</button>
+        </div>
+
+        <!-- Text using External CSS -->
+        <h2 class="external">This text is styled using External CSS</h2>
+
+        <!-- Internal JavaScript -->
+        <script>
+
+            function showMessage()
+            {
+                alert("Welcome to Internal JavaScript!");
+
+                console.log("This is console.log()");
+
+                console.info("This is console.info()");
+
+                console.warn("This is console.warn()");
+
+                console.error("This is console.error()");
+
+                console.table([
+                    {
+                        Name:"Ayush Katekhaye",
+                        RollNo:"24070521161"
+                    }
+                ]);
+            }
+
+        </script>
+
+        <!-- External JavaScript -->
+        <script src="script.js"></script>
+
+    </body>
+</html>  
