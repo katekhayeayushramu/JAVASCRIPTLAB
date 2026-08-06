@@ -1,0 +1,14 @@
+function displayInfo()
+{
+    alert("Welcome to External JavaScript!");
+
+    console.log("External JavaScript Executed");
+
+    let student = {
+        Name: "Ayush Katekhaye",
+        RollNo: "24070521161",
+        Branch: "Computer Science Engineering"
+    };
+
+    console.table(student);
+}
