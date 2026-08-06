@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Student Grade System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Login Section -->
+
+<div id="loginSection">
+
+<h1>🔐 Login Page</h1>
+
+<label>Username</label>
+<input type="text" id="username" placeholder="Enter Username">
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Enter Password">
+
+<button onclick="validateLogin()">Login</button>
+
+</div>
+
+<!-- Grade Section -->
+
+<div id="gradeSection" style="display:none;">
+
+<h1>🎓 Student Grade Sheet</h1>
+
+<label>Student Name</label>
+<input type="text" id="studentName" placeholder="Enter Student Name">
+
+<label>English</label>
+<input type="number" id="english">
+
+<label>Mathematics</label>
+<input type="number" id="maths">
+
+<label>Science</label>
+<input type="number" id="science">
+
+<label>Computer</label>
+<input type="number" id="computer">
+
+<label>History</label>
+<input type="number" id="history">
+
+<button onclick="calculateGrade()">Calculate Grade</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
