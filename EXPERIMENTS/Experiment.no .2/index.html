@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Krushi Kendra Receipt</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+        }
+
+        .receipt{
+            width:450px;
+            margin:30px auto;
+            background:white;
+            border:2px solid black;
+            padding:20px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h2,h3{
+            text-align:center;
+            margin:5px;
+        }
+
+        hr{
+            border:1px dashed black;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:10px;
+        }
+
+        table,th,td{
+            border:1px solid black;
+        }
+
+        th,td{
+            padding:8px;
+            text-align:center;
+        }
+
+        .total{
+            text-align:right;
+            margin-top:15px;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        .footer{
+            text-align:center;
+            margin-top:20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<script>
+
+const GST = 0.18;
+
+var customerName = prompt("Enter Customer Name:");
+var productName = prompt("Enter Product Name:");
+var quantity = parseInt(prompt("Enter Quantity:"));
+var price = parseFloat(prompt("Enter Price per Item:"));
+
+let total = quantity * price;
+let gst = total * GST;
+let finalCost = total + gst;
+
+document.write(`
+
+<div class="receipt">
+
+<h2>🌾 jai laxmi KRUSHI KENDRA 🌾</h2>
+<h3>Chikhali, Adyal</h3>
+<p style="text-align:center;">Mob : 9876543210</p>
+
+<hr>
+
+<p><b>Customer :</b> ${customerName}</p>
+<p><b>Date :</b> ${new Date().toLocaleDateString()}</p>
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Qty</th>
+<th>Rate</th>
+<th>Total</th>
+</tr>
+
+<tr>
+<td>${productName}</td>
+<td>${quantity}</td>
+<td>₹${price.toFixed(2)}</td>
+<td>₹${total.toFixed(2)}</td>
+</tr>
+
+</table>
+
+<p class="total">GST (18%) : ₹${gst.toFixed(2)}</p>
+
+<p class="total">Final Amount : ₹${finalCost.toFixed(2)}</p>
+
+<hr>
+
+<div class="footer">
+<h3>Thank You... Visit Again!</h3>
+<p>Ayush Katekhaye</p>
+<p>PRN No : 24070521161</p>
+</div>
+
+</div>
+
+`);
+
+</script>
+
+</body>
+</html>
