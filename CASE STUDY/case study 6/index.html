@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript String Operations</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f1f1;
+            border-radius: 6px;
+            min-height: 45px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>JavaScript String Operations</h1>
+        <p>Case Studies</p>
+    </header>
+
+
+    <!-- Case Study 1 -->
+
+    <div class="card">
+
+        <h2>Case Study 1: Reverse a String</h2>
+
+        <label for="stringInput">
+            Enter a String:
+        </label>
+
+        <input
+            type="text"
+            id="stringInput"
+            placeholder="Enter your string"
+        >
+
+        <button onclick="reverseString()">
+            Reverse String
+        </button>
+
+        <div class="result">
+            <strong>Result:</strong>
+            <span id="reverseResult"></span>
+        </div>
+
+    </div>
+
+
+    <!-- Case Study 2 -->
+
+    <div class="card">
+
+        <h2>Case Study 2: Count Vowels in a Paragraph</h2>
+
+        <label for="paragraphInput">
+            Enter a Paragraph:
+        </label>
+
+        <textarea
+            id="paragraphInput"
+            placeholder="Enter your paragraph here..."
+        ></textarea>
+
+        <button onclick="countVowels()">
+            Count Vowels
+        </button>
+
+        <div class="result">
+            <strong>Result:</strong>
+            <span id="vowelResult"></span>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <p>Experiment 6 - String Operations Using JavaScript</p>
+    </footer>
+
+</div>
+
+
+<script>
+
+    // Case Study 1: Reverse a String
+
+    function reverseString() {
+
+        let str = document.getElementById("stringInput").value;
+
+        let reverse = "";
+
+        for (let i = str.length - 1; i >= 0; i--) {
+
+            reverse = reverse + str[i];
+
+        }
+
+        document.getElementById("reverseResult").innerHTML =
+            reverse;
+    }
+
+
+    // Case Study 2: Count Vowels
+
+    function countVowels() {
+
+        let paragraph =
+            document.getElementById("paragraphInput").value;
+
+        let count = 0;
+
+        for (let i = 0; i < paragraph.length; i++) {
+
+            let ch = paragraph[i].toLowerCase();
+
+            if (
+                ch == 'a' ||
+                ch == 'e' ||
+                ch == 'i' ||
+                ch == 'o' ||
+                ch == 'u'
+            ) {
+
+                count++;
+
+            }
+        }
+
+        document.getElementById("vowelResult").innerHTML =
+            "Number of vowels = " + count;
+    }
+
+</script>
+
+</body>
+</html> 
+
+
