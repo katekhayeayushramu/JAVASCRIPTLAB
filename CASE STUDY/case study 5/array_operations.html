@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Array Operations</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #eef2ff;
+            color: #222;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .reset {
+            background-color: #dc2626;
+        }
+
+        .reset:hover {
+            background-color: #b91c1c;
+        }
+
+        .array-box {
+            background-color: #eef2ff;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            word-wrap: break-word;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            border-radius: 5px;
+        }
+
+        .max {
+            color: green;
+            font-weight: bold;
+        }
+
+        .min {
+            color: red;
+            font-weight: bold;
+        }
+
+        .operation-buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Array Operations</h1>
+    <p>Study of Arrays and Loops</p>
+</header>
+
+
+<div class="container">
+
+    <!-- INPUT ARRAY -->
+    <div class="card">
+
+        <h2>1. Create Array</h2>
+
+        <label>Enter numbers separated by commas:</label>
+
+        <input
+            type="text"
+            id="inputArray"
+            placeholder="Example: 25,10,45,5,30,15"
+        >
+
+        <button onclick="createArray()">Create Array</button>
+
+        <div class="array-box">
+            Current Array:
+            <span id="currentArray">[]</span>
+        </div>
+
+    </div>
+
+
+    <!-- ARRAY MANIPULATION -->
+    <div class="card">
+
+        <h2>2. Array Manipulation</h2>
+
+        <div class="operation-buttons">
+
+            <button onclick="pushElement()">
+                push()
+            </button>
+
+            <button onclick="popElement()">
+                pop()
+            </button>
+
+            <button onclick="shiftElement()">
+                shift()
+            </button>
+
+            <button onclick="unshiftElement()">
+                unshift()
+            </button>
+
+            <button onclick="spliceElement()">
+                splice()
+            </button>
+
+            <button onclick="sliceElement()">
+                slice()
+            </button>
+
+            <button class="reset" onclick="resetArray()">
+                Reset
+            </button>
+
+        </div>
+
+        <div class="result">
+            <strong>Operation Result:</strong>
+
+            <p id="operationResult">
+                Select an operation.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ARRAY METHODS -->
+    <div class="card">
+
+        <h2>3. Array Methods</h2>
+
+        <button onclick="mapArray()">
+            map()
+        </button>
+
+        <button onclick="filterArray()">
+            filter()
+        </button>
+
+        <button onclick="reduceArray()">
+            reduce()
+        </button>
+
+        <button onclick="forEachArray()">
+            forEach()
+        </button>
+
+        <div class="result">
+
+            <strong>Method Result:</strong>
+
+            <p id="methodResult">
+                Select an array method.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAXIMUM AND MINIMUM -->
+    <div class="card">
+
+        <h2>4. Find Maximum and Minimum</h2>
+
+        <button onclick="findMaxMin()">
+            Find Maximum & Minimum
+        </button>
+
+        <div class="result">
+
+            <p>
+                <strong>Maximum Value:</strong>
+                <span class="max" id="maximum">-</span>
+            </p>
+
+            <p>
+                <strong>Minimum Value:</strong>
+                <span class="min" id="minimum">-</span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    JavaScript Array and Loop Experiment
+</footer>
+
+
+<script>
+
+    // Default array
+    let numbers = [25, 10, 45, 5, 30, 15];
+
+    // Display initial array
+    displayArray();
+
+
+    // Display array
+    function displayArray() {
+
+        document.getElementById("currentArray").innerHTML =
+            "[" + numbers.join(", ") + "]";
+
+    }
+
+
+    // CREATE ARRAY
+    function createArray() {
+
+        let input =
+            document.getElementById("inputArray").value;
+
+        if (input.trim() === "") {
+
+            alert("Please enter numbers.");
+
+            return;
+        }
+
+        numbers = input
+            .split(",")
+            .map(Number);
+
+        if (numbers.some(isNaN)) {
+
+            alert("Please enter valid numbers.");
+
+            return;
+        }
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "Array created successfully.";
+
+    }
+
+
+    // PUSH
+    function pushElement() {
+
+        numbers.push(50);
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "push(50): 50 added at the end.";
+
+    }
+
+
+    // POP
+    function popElement() {
+
+        let removed = numbers.pop();
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "pop(): " + removed + " removed from the end.";
+
+    }
+
+
+    // SHIFT
+    function shiftElement() {
+
+        let removed = numbers.shift();
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "shift(): " + removed + " removed from the beginning.";
+
+    }
+
+
+    // UNSHIFT
+    function unshiftElement() {
+
+        numbers.unshift(20);
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "unshift(20): 20 added at the beginning.";
+
+    }
+
+
+    // SPLICE
+    function spliceElement() {
+
+        if (numbers.length >= 3) {
+
+            numbers.splice(2, 1, 50);
+
+            displayArray();
+
+            document.getElementById("operationResult").innerHTML =
+                "splice(2, 1, 50): Element at index 2 replaced by 50.";
+
+        } else {
+
+            alert("Array must contain at least 3 elements.");
+
+        }
+
+    }
+
+
+    // SLICE
+    function sliceElement() {
+
+        let result = numbers.slice(1, 4);
+
+        document.getElementById("operationResult").innerHTML =
+            "slice(1, 4): [" + result.join(", ") + "]";
+
+    }
+
+
+    // MAP
+    function mapArray() {
+
+        let result = numbers.map(function(num) {
+
+            return num * 2;
+
+        });
+
+        document.getElementById("methodResult").innerHTML =
+            "map() - Each number multiplied by 2:<br><br>" +
+            "[" + result.join(", ") + "]";
+
+    }
+
+
+    // FILTER
+    function filterArray() {
+
+        let result = numbers.filter(function(num) {
+
+            return num > 20;
+
+        });
+
+        document.getElementById("methodResult").innerHTML =
+            "filter() - Numbers greater than 20:<br><br>" +
+            "[" + result.join(", ") + "]";
+
+    }
+
+
+    // REDUCE
+    function reduceArray() {
+
+        let result = numbers.reduce(function(total, num) {
+
+            return total + num;
+
+        }, 0);
+
+        document.getElementById("methodResult").innerHTML =
+            "reduce() - Sum of all numbers: " + result;
+
+    }
+
+
+    // FOREACH
+    function forEachArray() {
+
+        let result = "";
+
+        numbers.forEach(function(num) {
+
+            result += num + " ";
+
+        });
+
+        document.getElementById("methodResult").innerHTML =
+            "forEach() - Array elements:<br><br>" +
+            result;
+
+    }
+
+
+    // FIND MAXIMUM AND MINIMUM
+    function findMaxMin() {
+
+        if (numbers.length === 0) {
+
+            alert("Array is empty.");
+
+            return;
+        }
+
+        let maximum = numbers[0];
+
+        let minimum = numbers[0];
+
+
+        for (let i = 1; i < numbers.length; i++) {
+
+            if (numbers[i] > maximum) {
+
+                maximum = numbers[i];
+
+            }
+
+            if (numbers[i] < minimum) {
+
+                minimum = numbers[i];
+
+            }
+
+        }
+
+
+        document.getElementById("maximum").innerHTML =
+            maximum;
+
+        document.getElementById("minimum").innerHTML =
+            minimum;
+
+    }
+
+
+    // RESET
+    function resetArray() {
+
+        numbers = [25, 10, 45, 5, 30, 15];
+
+        displayArray();
+
+        document.getElementById("operationResult").innerHTML =
+            "Array reset to [25, 10, 45, 5, 30, 15].";
+
+        document.getElementById("methodResult").innerHTML =
+            "Select an array method.";
+
+        document.getElementById("maximum").innerHTML = "-";
+
+        document.getElementById("minimum").innerHTML = "-";
+
+    }
+
+</script>
+
+</body>
+</html> 
