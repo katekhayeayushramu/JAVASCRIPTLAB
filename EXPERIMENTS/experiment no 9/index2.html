@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Theme Settings - Ayush Katekhaye</title>
+
+
+    <style>
+
+        /* ==============================
+           RESET
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ==============================
+           BODY
+        ============================== */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: #e8edf3;
+
+            color: #222;
+
+            transition:
+                background 0.4s ease,
+                color 0.4s ease;
+        }
+
+
+        /* ==============================
+           DARK MODE
+        ============================== */
+
+        body.dark {
+            background: #1c1c1c;
+            color: white;
+        }
+
+
+        /* ==============================
+           MAIN CONTAINER
+        ============================== */
+
+        .container {
+            width: 430px;
+
+            padding: 35px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.20);
+
+            transition: 0.4s;
+        }
+
+
+        body.dark .container {
+            background: #2b2b2b;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* ==============================
+           HEADING
+        ============================== */
+
+        h1 {
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .subtitle {
+            color: #666;
+
+            margin-bottom: 15px;
+        }
+
+
+        body.dark .subtitle {
+            color: #ccc;
+        }
+
+
+        /* ==============================
+           STUDENT INFORMATION
+        ============================== */
+
+        .student-info {
+            background: #f2f2f2;
+
+            padding: 12px;
+
+            margin-bottom: 25px;
+
+            border-radius: 7px;
+
+            text-align: left;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        body.dark .student-info {
+            background: #414141;
+        }
+
+
+        .student-info strong {
+            color: #5555cc;
+        }
+
+
+        body.dark .student-info strong {
+            color: #aaaaff;
+        }
+
+
+        /* ==============================
+           SELECT BOX
+        ============================== */
+
+        select {
+            width: 170px;
+
+            padding: 10px;
+
+            margin-bottom: 20px;
+
+            border: 1px solid #888;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            background: white;
+        }
+
+
+        body.dark select {
+            background: #444;
+
+            color: white;
+
+            border-color: #777;
+        }
+
+
+        /* ==============================
+           BUTTON AREA
+        ============================== */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* ==============================
+           BUTTON
+        ============================== */
+
+        button {
+            padding: 10px 14px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #e1e1e1;
+
+            color: #222;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+
+        button:hover {
+            background: #d0d0d0;
+
+            transform: translateY(-2px);
+        }
+
+
+        body.dark button {
+            background: #555;
+
+            color: white;
+        }
+
+
+        body.dark button:hover {
+            background: #666;
+        }
+
+
+        /* ==============================
+           STATUS
+        ============================== */
+
+        .status {
+            margin-top: 25px;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            background: #eef7ee;
+
+            color: #247024;
+
+            font-size: 14px;
+
+            min-height: 40px;
+        }
+
+
+        body.dark .status {
+            background: #243d24;
+
+            color: #9bea9b;
+        }
+
+
+        /* ==============================
+           STORAGE INFORMATION
+        ============================== */
+
+        .storage {
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #ddd;
+
+            text-align: left;
+        }
+
+
+        body.dark .storage {
+            border-color: #555;
+        }
+
+
+        .storage h3 {
+            text-align: center;
+
+            margin-bottom: 12px;
+        }
+
+
+        .storage p {
+            margin: 8px 0;
+
+            font-size: 14px;
+        }
+
+
+        .value {
+            font-weight: bold;
+
+            color: #5555cc;
+        }
+
+
+        body.dark .value {
+            color: #aaaaff;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        .footer {
+            margin-top: 20px;
+
+            font-size: 12px;
+
+            color: #777;
+        }
+
+
+        body.dark .footer {
+            color: #aaa;
+        }
+
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 500px) {
+
+            .container {
+                width: 90%;
+
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         MAIN CONTAINER
+    ================================== -->
+
+    <div class="container">
+
+
+        <!-- TITLE -->
+
+        <h1>Theme Settings</h1>
+
+
+        <p class="subtitle">
+            Select your preferred theme
+        </p>
+
+
+        <!-- =================================
+             STUDENT INFORMATION
+        ================================== -->
+
+        <div class="student-info">
+
+            <p>
+                <strong>Name:</strong>
+                Ayush Katekhaye
+            </p>
+
+            <p>
+                <strong>PRN:</strong>
+                24070521161
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             THEME SELECTION
+        ================================== -->
+
+        <select id="themeSelect">
+
+            <option value="light">
+                ☀️ Light
+            </option>
+
+            <option value="dark">
+                🌙 Dark
+            </option>
+
+        </select>
+
+
+        <!-- =================================
+             BUTTONS
+        ================================== -->
+
+        <div class="buttons">
+
+
+            <button onclick="saveLocal()">
+
+                💾 Save using Local Storage
+
+            </button>
+
+
+            <button onclick="saveSession()">
+
+                🕐 Save using Session Storage
+
+            </button>
+
+
+            <button onclick="clearPreferences()">
+
+                🗑️ Clear Preferences
+
+            </button>
+
+
+        </div>
+
+
+        <!-- =================================
+             STATUS MESSAGE
+        ================================== -->
+
+        <div
+            class="status"
+            id="status">
+
+            Select a theme and save your preference.
+
+        </div>
+
+
+        <!-- =================================
+             STORAGE INFORMATION
+        ================================== -->
+
+        <div class="storage">
+
+
+            <h3>
+                Storage Information
+            </h3>
+
+
+            <p>
+
+                Local Storage:
+
+                <span
+                    class="value"
+                    id="localData">
+
+                    Empty
+
+                </span>
+
+            </p>
+
+
+            <p>
+
+                Session Storage:
+
+                <span
+                    class="value"
+                    id="sessionData">
+
+                    Empty
+
+                </span>
+
+            </p>
+
+
+            <p>
+
+                Current Theme:
+
+                <span
+                    class="value"
+                    id="currentTheme">
+
+                    Light ☀️
+
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- =================================
+             FOOTER
+        ================================== -->
+
+        <div class="footer">
+
+            JavaScript Practical
+
+            <br>
+
+            Local Storage & Session Storage
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+
+        /* ==============================
+           GET HTML ELEMENTS
+        ============================== */
+
+        const themeSelect =
+            document.getElementById("themeSelect");
+
+
+        const status =
+            document.getElementById("status");
+
+
+        const localData =
+            document.getElementById("localData");
+
+
+        const sessionData =
+            document.getElementById("sessionData");
+
+
+        const currentTheme =
+            document.getElementById("currentTheme");
+
+
+
+        /* ==============================
+           APPLY THEME
+        ============================== */
+
+        function applyTheme(theme) {
+
+
+            if (theme === "dark") {
+
+                document.body.classList.add("dark");
+
+                themeSelect.value = "dark";
+
+                currentTheme.innerText =
+                    "Dark 🌙";
+
+            }
+
+            else {
+
+                document.body.classList.remove("dark");
+
+                themeSelect.value = "light";
+
+                currentTheme.innerText =
+                    "Light ☀️";
+
+            }
+
+        }
+
+
+
+        /* ==============================
+           THEME CHANGE EVENT
+        ============================== */
+
+        themeSelect.addEventListener(
+            "change",
+            function () {
+
+
+                const theme =
+                    themeSelect.value;
+
+
+                applyTheme(theme);
+
+
+                status.innerText =
+                    "Theme selected. Click a storage button to save it.";
+
+            }
+        );
+
+
+
+        /* ==============================
+           SAVE USING LOCAL STORAGE
+        ============================== */
+
+        function saveLocal() {
+
+
+            const theme =
+                themeSelect.value;
+
+
+            localStorage.setItem(
+                "theme",
+                theme
+            );
+
+
+            applyTheme(theme);
+
+
+            updateStorage();
+
+
+            status.innerText =
+                "Theme saved using Local Storage ✓";
+
+        }
+
+
+
+        /* ==============================
+           SAVE USING SESSION STORAGE
+        ============================== */
+
+        function saveSession() {
+
+
+            const theme =
+                themeSelect.value;
+
+
+            sessionStorage.setItem(
+                "theme",
+                theme
+            );
+
+
+            applyTheme(theme);
+
+
+            updateStorage();
+
+
+            status.innerText =
+                "Theme saved using Session Storage ✓";
+
+        }
+
+
+
+        /* ==============================
+           CLEAR PREFERENCES
+        ============================== */
+
+        function clearPreferences() {
+
+
+            localStorage.removeItem("theme");
+
+
+            sessionStorage.removeItem("theme");
+
+
+            applyTheme("light");
+
+
+            updateStorage();
+
+
+            status.innerText =
+                "Theme preferences cleared ✓";
+
+        }
+
+
+
+        /* ==============================
+           UPDATE STORAGE INFORMATION
+        ============================== */
+
+        function updateStorage() {
+
+
+            const localTheme =
+                localStorage.getItem("theme");
+
+
+            const sessionTheme =
+                sessionStorage.getItem("theme");
+
+
+            if (localTheme) {
+
+                localData.innerText =
+                    localTheme;
+
+            }
+
+            else {
+
+                localData.innerText =
+                    "Empty";
+
+            }
+
+
+            if (sessionTheme) {
+
+                sessionData.innerText =
+                    sessionTheme;
+
+            }
+
+            else {
+
+                sessionData.innerText =
+                    "Empty";
+
+            }
+
+        }
+
+
+
+        /* ==============================
+           LOAD SAVED THEME
+        ============================== */
+
+        window.onload = function () {
+
+
+            /*
+                Check Local Storage first
+            */
+
+            let savedTheme =
+                localStorage.getItem("theme");
+
+
+            /*
+                If Local Storage is empty,
+                check Session Storage
+            */
+
+            if (!savedTheme) {
+
+                savedTheme =
+                    sessionStorage.getItem("theme");
+
+            }
+
+
+            /*
+                Apply saved theme
+            */
+
+            if (savedTheme) {
+
+                applyTheme(savedTheme);
+
+                status.innerText =
+                    "Saved theme loaded successfully ✓";
+
+            }
+
+            else {
+
+                applyTheme("light");
+
+            }
+
+
+            updateStorage();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>  
