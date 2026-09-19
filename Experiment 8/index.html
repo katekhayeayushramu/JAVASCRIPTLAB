@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IronFit Gym Admission Form</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #111111, #242424);
+            padding: 30px 15px;
+            color: white;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: #1b1b1b;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        /* HEADER */
+
+        header {
+            text-align: center;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 15px;
+        }
+
+        .student-info {
+            margin-top: 18px;
+            background: rgba(0,0,0,0.25);
+            padding: 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .student-info p {
+            margin: 4px;
+        }
+
+        /* FORM */
+
+        .form-container {
+            padding: 35px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff512f;
+            padding-left: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #444;
+            border-radius: 10px;
+            background: #292929;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #ff512f;
+        }
+
+        /* VALIDATION COLORS */
+
+        input.correct,
+        select.correct {
+            border-color: #00c853;
+            background: rgba(0, 200, 83, 0.08);
+        }
+
+        input.wrong,
+        select.wrong {
+            border-color: #ff1744;
+            background: rgba(255, 23, 68, 0.08);
+        }
+
+        .message {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #00e676;
+        }
+
+        .error {
+            color: #ff5252;
+        }
+
+        /* TWO COLUMN */
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* MEMBERSHIP */
+
+        .membership-section {
+            margin-top: 35px;
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .plan {
+            border: 2px solid #444;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            background: #242424;
+        }
+
+        .plan:hover {
+            transform: translateY(-5px);
+            border-color: #ff512f;
+        }
+
+        .plan.selected {
+            border-color: #00c853;
+            background: rgba(0, 200, 83, 0.08);
+        }
+
+        .plan input {
+            width: auto;
+            margin-bottom: 10px;
+            accent-color: #00c853;
+        }
+
+        .plan h3 {
+            margin: 8px 0;
+        }
+
+        .price {
+            color: #ff7043;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .popular {
+            position: absolute;
+            top: -12px;
+            right: 10px;
+            background: #ff512f;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* BENEFITS */
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .benefit {
+            text-align: center;
+            background: #252525;
+            padding: 15px 5px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        .benefit span {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 6px;
+        }
+
+        /* FINAL STATUS */
+
+        #formStatus {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        #formStatus.successBox {
+            display: block;
+            background: rgba(0, 200, 83, 0.15);
+            border: 2px solid #00c853;
+            color: #00e676;
+        }
+
+        #formStatus.errorBox {
+            display: block;
+            background: rgba(255, 23, 68, 0.15);
+            border: 2px solid #ff1744;
+            color: #ff5252;
+        }
+
+        /* BUTTON */
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(255,81,47,0.3);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 700px) {
+
+            .row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .plans {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            .form-container {
+                padding: 25px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            💪 IRONFIT GYM
+        </div>
+
+        <h1>GYM ADMISSION FORM</h1>
+
+        <p>
+            Transform Your Body • Build Your Strength • Become Better
+        </p>
+
+        <div class="student-info">
+            <p><strong>Created By:</strong> Ayush Katekhaye</p>
+            <p><strong>Roll No:</strong> 24070521161</p>
+        </div>
+
+    </header>
+
+
+    <!-- FORM -->
+
+    <div class="form-container">
+
+        <h2 class="section-title">
+            👤 Personal Information
+        </h2>
+
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                oninput="validateName()"
+            >
+
+            <span id="nameMessage" class="message"></span>
+
+        </div>
+
+
+        <!-- EMAIL + MOBILE -->
+
+        <div class="row">
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="example@gmail.com"
+                    oninput="validateEmail()"
+                >
+
+                <span id="emailMessage" class="message"></span>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="mobile">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="text"
+                    id="mobile"
+                    placeholder="10 digit mobile number"
+                    maxlength="10"
+                    oninput="validateMobile()"
+                >
+
+                <span id="mobileMessage" class="message"></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- AGE + GENDER -->
+
+        <div class="row">
+
+            <div class="form-group">
+
+                <label for="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    min="18"
+                    max="80"
+                    placeholder="18 - 80"
+                    oninput="validateAge()"
+                >
+
+                <span id="ageMessage" class="message"></span>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="gender">
+                    Gender
+                </label>
+
+                <select id="gender" onchange="validateGender()">
+
+                    <option value="">
+                        Select Gender
+                    </option>
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+                <span id="genderMessage" class="message"></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBERSHIP -->
+
+        <div class="membership-section">
+
+            <h2 class="section-title">
+                🏋️ Choose Membership Plan
+            </h2>
+
+
+            <div class="plans">
+
+
+                <!-- MONTHLY -->
+
+                <div class="plan" id="monthlyPlan">
+
+                    <input
+                        type="radio"
+                        name="membership"
+                        value="Monthly"
+                        onclick="selectPlan('monthlyPlan')"
+                    >
+
+                    <h3>Monthly</h3>
+
+                    <div class="price">
+                        ₹999
+                    </div>
+
+                    <p>per month</p>
+
+                </div>
+
+
+                <!-- QUARTERLY -->
+
+                <div class="plan" id="quarterlyPlan">
+
+                    <div class="popular">
+                        MOST POPULAR
+                    </div>
+
+                    <input
+                        type="radio"
+                        name="membership"
+                        value="Quarterly"
+                        onclick="selectPlan('quarterlyPlan')"
+                    >
+
+                    <h3>Quarterly</h3>
+
+                    <div class="price">
+                        ₹2,499
+                    </div>
+
+                    <p>3 months</p>
+
+                </div>
+
+
+                <!-- YEARLY -->
+
+                <div class="plan" id="yearlyPlan">
+
+                    <input
+                        type="radio"
+                        name="membership"
+                        value="Yearly"
+                        onclick="selectPlan('yearlyPlan')"
+                    >
+
+                    <h3>Yearly</h3>
+
+                    <div class="price">
+                        ₹7,999
+                    </div>
+
+                    <p>per year</p>
+
+                </div>
+
+            </div>
+
+            <span id="membershipMessage" class="message"></span>
+
+        </div>
+
+
+        <!-- BENEFITS -->
+
+        <div class="benefits">
+
+            <div class="benefit">
+                <span>🏋️</span>
+                Modern Equipment
+            </div>
+
+            <div class="benefit">
+                <span>👨‍🏫</span>
+                Certified Trainers
+            </div>
+
+            <div class="benefit">
+                <span>🏃</span>
+                Cardio Zone
+            </div>
+
+            <div class="benefit">
+                <span>📶</span>
+                Free Wi-Fi
+            </div>
+
+            <div class="benefit">
+                <span>🔐</span>
+                Locker Facility
+            </div>
+
+        </div>
+
+
+        <!-- FINAL STATUS -->
+
+        <div id="formStatus"></div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            class="submit-btn"
+            onclick="submitForm()"
+        >
+            JOIN IRONFIT GYM 💪
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* NAME VALIDATION */
+
+    function validateName() {
+
+        let input = document.getElementById("name");
+        let message = document.getElementById("nameMessage");
+
+        let name = input.value.trim();
+
+        if (name === "") {
+
+            input.classList.remove("correct", "wrong");
+            message.innerHTML = "";
+
+            return false;
+        }
+
+        if (/^[A-Za-z ]+$/.test(name) && name.length >= 3) {
+
+            input.classList.remove("wrong");
+            input.classList.add("correct");
+
+            message.innerHTML = "✓ Name is correct";
+            message.className = "message success";
+
+            return true;
+
+        } else {
+
+            input.classList.remove("correct");
+            input.classList.add("wrong");
+
+            message.innerHTML =
+                "✗ Enter a valid name using letters only";
+
+            message.className = "message error";
+
+            return false;
+        }
+    }
+
+
+    /* EMAIL VALIDATION */
+
+    function validateEmail() {
+
+        let input = document.getElementById("email");
+        let message = document.getElementById("emailMessage");
+
+        let email = input.value.trim();
+
+        let emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === "") {
+
+            input.classList.remove("correct", "wrong");
+            message.innerHTML = "";
+
+            return false;
+        }
+
+        if (emailPattern.test(email)) {
+
+            input.classList.remove("wrong");
+            input.classList.add("correct");
+
+            message.innerHTML = "✓ Email is correct";
+            message.className = "message success";
+
+            return true;
+
+        } else {
+
+            input.classList.remove("correct");
+            input.classList.add("wrong");
+
+            message.innerHTML =
+                "✗ Enter a valid email address";
+
+            message.className = "message error";
+
+            return false;
+        }
+    }
+
+
+    /* MOBILE VALIDATION */
+
+    function validateMobile() {
+
+        let input = document.getElementById("mobile");
+        let message = document.getElementById("mobileMessage");
+
+        let mobile = input.value.trim();
+
+        let mobilePattern =
+            /^[6-9][0-9]{9}$/;
+
+        if (mobile === "") {
+
+            input.classList.remove("correct", "wrong");
+            message.innerHTML = "";
+
+            return false;
+        }
+
+        if (mobilePattern.test(mobile)) {
+
+            input.classList.remove("wrong");
+            input.classList.add("correct");
+
+            message.innerHTML =
+                "✓ Mobile number is correct";
+
+            message.className = "message success";
+
+            return true;
+
+        } else {
+
+            input.classList.remove("correct");
+            input.classList.add("wrong");
+
+            message.innerHTML =
+                "✗ Enter a valid 10-digit mobile number";
+
+            message.className = "message error";
+
+            return false;
+        }
+    }
+
+
+    /* AGE VALIDATION */
+
+    function validateAge() {
+
+        let input = document.getElementById("age");
+        let message = document.getElementById("ageMessage");
+
+        let age = Number(input.value);
+
+        if (input.value === "") {
+
+            input.classList.remove("correct", "wrong");
+            message.innerHTML = "";
+
+            return false;
+        }
+
+        if (age >= 18 && age <= 80) {
+
+            input.classList.remove("wrong");
+            input.classList.add("correct");
+
+            message.innerHTML =
+                "✓ Age is valid (18–80)";
+
+            message.className = "message success";
+
+            return true;
+
+        } else {
+
+            input.classList.remove("correct");
+            input.classList.add("wrong");
+
+            message.innerHTML =
+                "✗ Age must be between 18 and 80";
+
+            message.className = "message error";
+
+            return false;
+        }
+    }
+
+
+    /* GENDER VALIDATION */
+
+    function validateGender() {
+
+        let input = document.getElementById("gender");
+        let message = document.getElementById("genderMessage");
+
+        if (input.value !== "") {
+
+            input.classList.remove("wrong");
+            input.classList.add("correct");
+
+            message.innerHTML =
+                "✓ Gender selected";
+
+            message.className = "message success";
+
+            return true;
+
+        } else {
+
+            input.classList.remove("correct");
+            input.classList.add("wrong");
+
+            message.innerHTML =
+                "✗ Please select your gender";
+
+            message.className = "message error";
+
+            return false;
+        }
+    }
+
+
+    /* MEMBERSHIP */
+
+    function selectPlan(planId) {
+
+        document.querySelectorAll(".plan")
+            .forEach(function(plan) {
+
+                plan.classList.remove("selected");
+
+            });
+
+        document
+            .getElementById(planId)
+            .classList.add("selected");
+
+        let message =
+            document.getElementById("membershipMessage");
+
+        message.innerHTML =
+            "✓ Membership plan selected";
+
+        message.className =
+            "message success";
+    }
+
+
+    /* CHECK MEMBERSHIP */
+
+    function validateMembership() {
+
+        let selected =
+            document.querySelector(
+                'input[name="membership"]:checked'
+            );
+
+        let message =
+            document.getElementById("membershipMessage");
+
+        if (selected) {
+
+            message.innerHTML =
+                "✓ Membership plan selected";
+
+            message.className =
+                "message success";
+
+            return true;
+
+        } else {
+
+            message.innerHTML =
+                "✗ Please select a membership plan";
+
+            message.className =
+                "message error";
+
+            return false;
+        }
+    }
+
+
+    /* FINAL FORM VALIDATION */
+
+    function checkAllFields() {
+
+        let nameValid = validateName();
+        let emailValid = validateEmail();
+        let mobileValid = validateMobile();
+        let ageValid = validateAge();
+        let genderValid = validateGender();
+        let membershipValid = validateMembership();
+
+        let status =
+            document.getElementById("formStatus");
+
+
+        if (
+            nameValid &&
+            emailValid &&
+            mobileValid &&
+            ageValid &&
+            genderValid &&
+            membershipValid
+        ) {
+
+            status.innerHTML =
+                "✓ All information is correct! You can submit the form.";
+
+            status.className =
+                "successBox";
+
+            return true;
+
+        } else {
+
+            status.innerHTML =
+                "✗ Please correct the highlighted information.";
+
+            status.className =
+                "errorBox";
+
+            return false;
+        }
+    }
+
+
+    /* SUBMIT */
+
+    function submitForm() {
+
+        if (checkAllFields()) {
+
+            alert(
+                "🎉 Admission Successful!\n\n" +
+                "Welcome to IronFit Gym, " +
+                document.getElementById("name").value + "!"
+            );
+
+        } else {
+
+            alert(
+                "❌ Please correct all red fields before submitting."
+            );
+        }
+    }
+
+
+    /* CHECK FORM WHEN USER CLICKS ANY FIELD */
+
+    document
+        .querySelectorAll("input, select")
+        .forEach(function(element) {
+
+            element.addEventListener("blur", function() {
+
+                checkAllFields();
+
+            });
+
+        });
+
+</script>
+
+</body>
+</html>
