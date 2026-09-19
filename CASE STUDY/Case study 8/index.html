@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Job Application Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💼 Online Job Application Form</h1>
+
+        <p class="subtitle">
+            Please fill in all the required information carefully.
+        </p>
+
+        <form id="jobForm">
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+
+            <div class="section">
+
+                <h2>👤 Personal Information</h2>
+
+                <div class="form-grid">
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+
+                        <input type="text"
+                               id="fullName"
+                               placeholder="Enter your full name">
+
+                        <small id="nameError"></small>
+                    </div>
+
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+
+                        <input type="date" id="dob">
+
+                        <small id="dobError"></small>
+                    </div>
+
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+
+                        <select id="gender">
+
+                            <option value="">
+                                Select Gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                        <small id="genderError"></small>
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+
+                        <input type="email"
+                               id="email"
+                               placeholder="example@gmail.com">
+
+                        <small id="emailError"></small>
+                    </div>
+
+
+                    <!-- Mobile -->
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number *</label>
+
+                        <input type="text"
+                               id="mobile"
+                               maxlength="10"
+                               placeholder="Enter 10-digit mobile number">
+
+                        <small id="mobileError"></small>
+                    </div>
+
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+
+                        <input type="text"
+                               id="address"
+                               placeholder="Enter your address">
+
+                        <small id="addressError"></small>
+                    </div>
+
+
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city">City *</label>
+
+                        <input type="text"
+                               id="city"
+                               placeholder="Enter city">
+
+                        <small id="cityError"></small>
+                    </div>
+
+
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="state">State *</label>
+
+                        <input type="text"
+                               id="state"
+                               placeholder="Enter state">
+
+                        <small id="stateError"></small>
+                    </div>
+
+
+                    <!-- PIN -->
+                    <div class="form-group">
+                        <label for="pin">PIN Code *</label>
+
+                        <input type="text"
+                               id="pin"
+                               maxlength="6"
+                               placeholder="Enter 6-digit PIN">
+
+                        <small id="pinError"></small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= EDUCATIONAL QUALIFICATION ================= -->
+
+            <div class="section">
+
+                <h2>🎓 Educational Qualification</h2>
+
+                <div class="form-grid">
+
+                    <!-- Qualification -->
+                    <div class="form-group">
+
+                        <label for="qualification">
+                            Highest Qualification *
+                        </label>
+
+                        <select id="qualification">
+
+                            <option value="">
+                                Select Qualification
+                            </option>
+
+                            <option>10th</option>
+                            <option>12th</option>
+                            <option>Diploma</option>
+                            <option>B.Tech / B.E.</option>
+                            <option>BCA</option>
+                            <option>MCA</option>
+                            <option>M.Tech / M.E.</option>
+                            <option>Other</option>
+
+                        </select>
+
+                        <small id="qualificationError"></small>
+
+                    </div>
+
+
+                    <!-- University -->
+                    <div class="form-group">
+
+                        <label for="university">
+                            University / Institute *
+                        </label>
+
+                        <input type="text"
+                               id="university"
+                               placeholder="Enter university/institute">
+
+                        <small id="universityError"></small>
+
+                    </div>
+
+
+                    <!-- Passing Year -->
+                    <div class="form-group">
+
+                        <label for="passingYear">
+                            Passing Year *
+                        </label>
+
+                        <input type="number"
+                               id="passingYear"
+                               placeholder="Example: 2026"
+                               min="1950">
+
+                        <small id="yearError"></small>
+
+                    </div>
+
+
+                    <!-- Percentage -->
+                    <div class="form-group">
+
+                        <label for="percentage">
+                            Percentage *
+                        </label>
+
+                        <input type="number"
+                               id="percentage"
+                               placeholder="Enter percentage (0-100)"
+                               min="0"
+                               max="100"
+                               step="0.01">
+
+                        <small id="percentageError"></small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PROFESSIONAL INFORMATION ================= -->
+
+            <div class="section">
+
+                <h2>💼 Professional Information</h2>
+
+                <div class="form-grid">
+
+                    <!-- Job Position -->
+                    <div class="form-group">
+
+                        <label for="jobPosition">
+                            Applying For / Job Position *
+                        </label>
+
+                        <select id="jobPosition">
+
+                            <option value="">
+                                Select Job Position
+                            </option>
+
+                            <option>Frontend Developer</option>
+                            <option>Backend Developer</option>
+                            <option>Full Stack Developer</option>
+                            <option>Software Engineer</option>
+                            <option>Data Analyst</option>
+                            <option>AI/ML Engineer</option>
+                            <option>Cyber Security Analyst</option>
+
+                        </select>
+
+                        <small id="jobError"></small>
+
+                    </div>
+
+
+                    <!-- Experience -->
+                    <div class="form-group">
+
+                        <label for="experience">
+                            Total Work Experience
+                        </label>
+
+                        <input type="number"
+                               id="experience"
+                               min="0"
+                               step="0.1"
+                               placeholder="Experience in years">
+
+                        <small id="experienceError"></small>
+
+                    </div>
+
+
+                    <!-- Organization -->
+                    <div class="form-group">
+
+                        <label for="organization">
+                            Current / Previous Organization
+                        </label>
+
+                        <input type="text"
+                               id="organization"
+                               placeholder="Company name">
+
+                    </div>
+
+
+                    <!-- Designation -->
+                    <div class="form-group">
+
+                        <label for="designation">
+                            Current Designation
+                        </label>
+
+                        <input type="text"
+                               id="designation"
+                               placeholder="Example: Intern">
+
+                    </div>
+
+
+                    <!-- Salary -->
+                    <div class="form-group">
+
+                        <label for="salary">
+                            Expected Salary *
+                        </label>
+
+                        <input type="number"
+                               id="salary"
+                               min="1"
+                               placeholder="Expected annual salary">
+
+                        <small id="salaryError"></small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TECHNICAL SKILLS ================= -->
+
+            <div class="section">
+
+                <h2>💻 Technical Skills</h2>
+
+
+                <!-- Programming Languages -->
+
+                <div class="form-group full">
+
+                    <label>
+                        Programming Languages *
+                    </label>
+
+                    <div class="checkbox-group">
+
+                        <label>
+                            <input type="checkbox"
+                                   name="language"
+                                   value="C">
+                            C
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   name="language"
+                                   value="C++">
+                            C++
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   name="language"
+                                   value="Java">
+                            Java
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   name="language"
+                                   value="Python">
+                            Python
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   name="language"
+                                   value="JavaScript">
+                            JavaScript
+                        </label>
+
+                    </div>
+
+                    <small id="languageError"></small>
+
+                </div>
+
+
+                <!-- Technical Skills -->
+
+                <div class="form-group full">
+
+                    <label for="skills">
+                        Technical Skills *
+                    </label>
+
+                    <textarea id="skills"
+                              rows="4"
+                              placeholder="Example: HTML, CSS, JavaScript, MySQL, React..."></textarea>
+
+                    <small id="skillsError"></small>
+
+                </div>
+
+
+                <!-- Certifications -->
+
+                <div class="form-group full">
+
+                    <label for="certifications">
+                        Certifications
+                    </label>
+
+                    <textarea id="certifications"
+                              rows="3"
+                              placeholder="Enter your certifications"></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ADDITIONAL INFORMATION ================= -->
+
+            <div class="section">
+
+                <h2>📝 Additional Information</h2>
+
+                <div class="form-group full">
+
+                    <label for="message">
+                        Why should we hire you?
+                    </label>
+
+                    <textarea id="message"
+                              rows="5"
+                              placeholder="Write a short description about yourself..."></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BUTTONS ================= -->
+
+            <div class="button-area">
+
+                <button type="submit" class="submit-btn">
+                    🚀 Submit Application
+                </button>
+
+                <button type="reset"
+                        class="reset-btn"
+                        id="resetBtn">
+                    🔄 Reset
+                </button>
+
+            </div>
+
+
+            <!-- Success / Error Message -->
+
+            <div id="successMessage"></div>
+
+        </form>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
